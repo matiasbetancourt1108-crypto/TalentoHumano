@@ -9,9 +9,10 @@ import java.util.ArrayList;
  */
 public class EmpleadoControlador {
     // Array: lista FIJA de tipos de empleado (no cambia mientras corre el programa)
-    public static final String[] TIPOS_EMPLEADO = {"Operativo", "Administrativo"};
+    public static final String[] TIPOS_EMPLEADO = {"Operativo", "Administrativo", "Comercial"};
     private final RepositorioEmpleados repositorio;
     private final ArrayList<String> historial; // ArrayList: crece con cada operación
+
     public EmpleadoControlador() {
         repositorio = new RepositorioEmpleados();
         historial = new ArrayList<>();
@@ -19,15 +20,19 @@ public class EmpleadoControlador {
     }
     // Carga 4 empleados de ejemplo usando arrays paralelos y un ciclo for
     private void cargarDatosDePrueba() {
+
         String[] cedulas = {"1001", "1002", "1003", "1004"};
         String[] nombres = {"Ana Torres", "Luis Gómez", "Marta Ríos", "Pedro Cano"};
         double[] salarios = {1800000, 2500000, 1750000, 3200000};
 
         for (int i = 0; i < cedulas.length; i++) {
             EmpleadoBase empleado;
+
             if (i % 2 == 0) {
                 empleado = new EmpleadoBase(cedulas[i], nombres[i], salarios[i]);
+
             } else {
+
                 empleado = new EmpleadoAdministrativo(cedulas[i], nombres[i],
                         salarios[i], 300000);
 
